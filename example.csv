@@ -1,0 +1,2 @@
+pairId,tumorBam,normalBam,assay,normalType,bedFile
+test_pair,/Users/bolipatc/Documents/work/test-datasets/data/genomics/homo_sapiens/illumina/bam/test_illumina_mt.bam,/Users/bolipatc/Documents/work/test-datasets/data/genomics/homo_sapiens/illumina/purecn/purecn_ex1.bam,IMPACT505,MATCHED,null
