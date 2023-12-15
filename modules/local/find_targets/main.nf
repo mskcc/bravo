@@ -4,7 +4,6 @@
 
 process FIND_TARGETS {
 
-
     tag "$meta.id"
     label 'process_medium'
 
@@ -13,18 +12,22 @@ process FIND_TARGETS {
 //        'docker.io/mskcc/mjolnir:0.1.0' }"
 
     input:
-    tuple val(meta), path(bam_tumor), path(bai_tumor), path(bam_normal), path(bai_normal), val(assay)
+    tuple val(meta), path(bams), path(bam_indices)
 
     output:
-    tuple val(meta), path(output_file)  , emit: combined
+    tuple val(meta), path('*.ft.bed')  , emit: ft_bed 
     path "versions.yml"                , emit: versions
 
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def assay = task.ext.assay ?: "${meta.assay}"
+    def bam_tumor = "${bams[0]}"
+    def bam_normal = "${bams[1]}"
+    def output_file = "${meta.id}.ft.bed"
     //$projectDir/bin/my_bash_script.sh <command>
     """
-    echo find_targets ${bam_tumor}, ${bam_normal}, ${assay} > ${meta.id}.ft.bed
+    echo find_targets ${bam_tumor}, ${bam_normal}, ${assay} > ${output_file}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

@@ -1,2 +1,2 @@
 pairId,tumorBam,normalBam,assay,normalType,bedFile
-test_pair,/Users/bolipatc/Documents/work/test-datasets/data/genomics/homo_sapiens/illumina/bam/test.paired_end.sorted.bam,/Users/bolipatc/Documents/work/test-datasets/data/genomics/homo_sapiens/illumina/bam/test2.paired_end.sorted.bam,IMPACT505,MATCHED,
+test_pair,/Users/bolipatc/Documents/work/test-datasets/data/genomics/homo_sapiens/illumina/bam/test2.paired_end.sorted.bam,/Users/bolipatc/Documents/work/test-datasets/data/genomics/homo_sapiens/illumina/bam/test.paired_end.sorted.bam,IMPACT505,MATCHED,

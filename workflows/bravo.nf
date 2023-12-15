@@ -91,11 +91,11 @@ workflow BRAVO {
 
     INPUT_CHECK.out.bams.view()
 
-//    FIND_TARGETS (
-//        
-//    )
+    FIND_TARGETS (
+        INPUT_CHECK.out.bams        
+    )
 
-//    ch_versions = ch_versions.mix(FIND_TARGETS.out.versions)
+    ch_versions = ch_versions.mix(FIND_TARGETS.out.versions)
 
     CUSTOM_DUMPSOFTWAREVERSIONS (
         ch_versions.unique().collectFile(name: 'collated_versions.yml')
