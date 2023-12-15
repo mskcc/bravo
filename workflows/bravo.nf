@@ -73,14 +73,14 @@ workflow BRAVO {
 
     // Run variant callers
     // TODO: Going to assume .bai for each bam is created, but in the future add something that creates index if it doesn't exist
-    ch_fasta_ref = Channel.value([ "reference_genome", file(params.fasta) ])
-    ref_index_list = []
-    for(single_genome_ref in params.fasta_index){
-        ref_index_list.add(file(single_genome_ref))
-    }
-    ch_fasta_fai_ref = Channel.value([ "reference_genome_index",ref_index_list])
-    ch_bedfile = Channel.value([ file(params.bed_file) ])
-    ch_dbsnp = Channel.value([ "dbsnp", file(params.dbsnp) ])
+//    ch_fasta_ref = Channel.value([ "reference_genome", file(params.fasta) ])
+//    ref_index_list = []
+//    for(single_genome_ref in params.fasta_index){
+//        ref_index_list.add(file(single_genome_ref))
+//    }
+//    ch_fasta_fai_ref = Channel.value([ "reference_genome_index",ref_index_list])
+//    ch_bedfile = Channel.value([ file(params.bed_file) ])
+//    ch_dbsnp = Channel.value([ "dbsnp", file(params.dbsnp) ])
     intervals = params.intervals
 
     input_files = INPUT_CHECK.out.bams
@@ -89,13 +89,13 @@ workflow BRAVO {
             bed_provided: it[3] != null
         }
 
-    INPUT_CHECK.out.view()
+    INPUT_CHECK.out.bams.view()
 
 //    FIND_TARGETS (
 //        
 //    )
 
-    ch_versions = ch_versions.mix(TMB_WORKFLOW.out.versions)
+//    ch_versions = ch_versions.mix(FIND_TARGETS.out.versions)
 
     CUSTOM_DUMPSOFTWAREVERSIONS (
         ch_versions.unique().collectFile(name: 'collated_versions.yml')
