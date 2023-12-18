@@ -5,8 +5,8 @@ process SAMTOOLS_HEADER_VIEW {
     label 'process_medium'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'docker://mskcc/htslib:1.9':
-        'docker.io/mskcc/htslib:1.9' }"
+        'docker://mskcc/mjolnir:0.1.0':
+        'docker.io/mskcc/mjolnir:0.1.0' }"
 
     input:
     tuple val(meta), path(bam)
@@ -22,7 +22,7 @@ process SAMTOOLS_HEADER_VIEW {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    /usr/local/bin/samtools \\
+    samtools \\
         ${args} \\
         ${bam} | grep -o '${args2}' | sed '${args3}'
 

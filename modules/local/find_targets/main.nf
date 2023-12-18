@@ -7,9 +7,9 @@ process FIND_TARGETS {
     tag "$meta.id"
     label 'process_medium'
 
-//   container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-//        'docker://mskcc/mjolnir:0.1.0':
-//        'docker.io/mskcc/mjolnir:0.1.0' }"
+   container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'docker://mskcc/mjolnir:0.1.0':
+        'docker.io/mskcc/mjolnir:0.1.0' }"
 
     input:
     tuple val(meta), path(bams), path(bam_indices)
